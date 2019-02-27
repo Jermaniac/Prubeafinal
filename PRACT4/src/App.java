@@ -4,6 +4,8 @@ public static void main(String[] args){
 	Grafo g2 = new Grafo(8);
 	Grafo p = new Grafo(2);
 	System.out.println("Esta es la linea añadida");
+	System.out.println("Esta es la segunda linea añadida");
+
 	/*g.insertarArista("S","A","a");
 	g.insertarArista("S","C","b");
 	g.insertarArista("S","F","d");

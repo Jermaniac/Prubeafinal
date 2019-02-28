@@ -1,12 +1,21 @@
+import java.util.Scanner;
 
 public class Grafo {
-	int estados;
+	//definimos los atributos:
+	//numeros de estados
+	private int estados;
+	//numero de aristas
+	private int aristas=0;
+	// matriz para almacenar los estados conectados
 	private String matrix[][];
-	private int count=0;
-	private String finales[];
+	// string para almacenar los estados finales
+	private String finales;
+	// vector para almacenar los estados finales por separado
+	private String fin[];
+	//variable para almacenar estado inicial
 	private String initial;
+	// String con la solucion final
 	private String solution;
-	private String xd;
 	public Grafo (int numestados) {
 		this.estados=numestados;
 		matrix = new String [estados][estados];
@@ -20,6 +29,7 @@ public class Grafo {
 	public int traducir ( String t) {
 		int resul=0;
 		if(t.length()==1) {
+			//los estados estan en la forma S,A,B,C...
 		switch (t){
 		case "S": resul=0;
 		break;
@@ -38,6 +48,7 @@ public class Grafo {
 	}
 		}
 		else {
+			//los estados estan en la forma q0,q1,q2....
 			return Integer.parseInt(""+t.charAt(1));
 			
 		}
@@ -47,28 +58,20 @@ public class Grafo {
 		String resul=" ";
 			switch (t2){
 			case 0: resul="p0";
-			count++;
 			break;
 			case 1: resul="p1";
-			count++;
 			break;
 			case 2: resul="p2";
-			count++;
 			break;
 			case 3: resul="p3";
-			count++;
 			break;
 			case 4: resul="p4";
-			count++;
 			break;
 			case 5: resul="p5";
-			count++;
 			break;
 			case 6: resul="p6";
-			count++;
 			break;
 			case 7: resul="p7";
-			count++;
 			break;
 			}
 		return resul;
@@ -76,17 +79,20 @@ public class Grafo {
 	
 	public void insertarArista (String v1, String v2,String valor) {
 	matrix[traducir(v1)][traducir(v2)] = valor;
+	this.aristas++;
 	}
 	public void seleccionarInitialState(String ca) {
+		System.out.println("Se va a crear el automata de ejemplo...");
+		System.out.println("Se han insertado "+this.aristas+" aristas al automata.");
 		this.initial = ca;
 	}
 	public void seleccionarFinalStates(String cad) {
-		xd=cad;
-		finales = new String [cad.length()/2];
-		int i =0;
+		this.finales=cad;
+		int i=0;
 		int j=0;
-		while (i<cad.length()/2) {
-			finales[i]=""+cad.charAt(j)+cad.charAt(j+1);
+		fin= new String[finales.length()/2];
+		while (i<fin.length) {
+			fin[i]=""+finales.charAt(j)+finales.charAt(j+1);
 			j=j+2;
 			i++;
 		}
@@ -114,7 +120,7 @@ public class Grafo {
 			}
 			}
 			if(count==0) System.out.print(" no conecta");
-			if (xd.contains(traducir2(k))) System.out.print("Estado FINAL");
+			if (finales.contains(traducir2(k))) System.out.print("Estado FINAL");
 		}
 			System.out.println(" ");
 			
@@ -137,7 +143,7 @@ public class Grafo {
 			
 			if (matrix[i][j]!=" ") {
 				if (matrix[i][j].length()==1) {
-					if(i==j && (traducir2(i)==initial||xd.contains(traducir2(i)))) {
+					if(i==j && (traducir2(i)==initial||finales.contains(traducir2(i)))) {
 						solution="("+matrix[i][j]+")"+"+"+"("+"e"+")";
 					}
 					else {
@@ -147,7 +153,7 @@ public class Grafo {
 				else {
 					String primer= ""+matrix[i][j].charAt(0);
 					String second= ""+matrix[i][j].charAt(2);
-					if(i==j && (primer==initial||xd.contains(second)||second==initial||xd.contains(primer))) {
+					if(i==j && (primer==initial||finales.contains(second)||second==initial||finales.contains(primer))) {
 						solution=  "("+primer+")"+"+"+"("+second+")"+"+"+"("+"e"+")";
 					}
 					else {
@@ -172,11 +178,15 @@ public class Grafo {
 		return solution;
 	}
 	public void resultado () {
-		int j=xd.charAt(1);
 		solution = new String();
 		solution="";
-		System.out.println(initial+" "+finales[0]);
-		solution = aplicarAlgorithm(traducir(initial),traducir(finales[0]),estados-1);
+		System.out.println(initial+" "+fin[0]);
+		
+		//En este punto hay que aplicar el algoritmo tantas veces como estados finales haya, y unir los resultados ..... REVISAR***
+		for (int i=0; i<fin.length;i++) {
+			solution = aplicarAlgorithm(traducir(initial),traducir(fin[i]),estados-1);
+		}
+		
 			 System.out.print(solution);
 		}
 	}

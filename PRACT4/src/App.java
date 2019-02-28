@@ -3,8 +3,9 @@ public static void main(String[] args){
 	Grafo g = new Grafo (7);
 	Grafo g2 = new Grafo(8);
 	Grafo p = new Grafo(2);
-	System.out.println("Esta es la linea añadida");
-	System.out.println("Esta es la segunda linea añadida");
+
+	System.out.print("PROGRAMA PRACTICA 4 TLP: ");
+	System.out.println("Pasar de un automata finito determinista a una expresion regular.");
 
 	/*g.insertarArista("S","A","a");
 	g.insertarArista("S","C","b");

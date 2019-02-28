@@ -1,12 +1,12 @@
 
 public class Grafo {
 	int estados;
-	String matrix[][];
+	private String matrix[][];
 	private int count=0;
-	String finales[];
-	String initial;
-	String solution;
-	String xd;
+	private String finales[];
+	private String initial;
+	private String solution;
+	private String xd;
 	public Grafo (int numestados) {
 		this.estados=numestados;
 		matrix = new String [estados][estados];

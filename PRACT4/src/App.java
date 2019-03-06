@@ -6,35 +6,35 @@ public static void main(String[] args){
 
 	System.out.print("PROGRAMA PRACTICA 4 TLP: ");
 	System.out.println("Pasar de un automata finito determinista a una expresion regular.");
-
+	System.out.println("CAMBIO 1 xd");
 	/*g.insertarArista("S","A","a");
 	g.insertarArista("S","C","b");
 	g.insertarArista("S","F","d");
 	g.insertarArista("S","D","c");
-	
-	
+
+
 	g.insertarArista("A","B", "b");
-	
-	
+
+
 	g.insertarArista("B", "B", "b");
 	g.insertarArista("B","F","c,d");
-	
+
 	g.insertarArista("C", "D", "a");
-	
+
 	g.insertarArista("D", "S", "a");
 	g.insertarArista("D", "E", "c");
-	
+
 	g.insertarArista("E", "F", "b");
-	
+
 	g.seleccionarInitialState("p0");
 	g.seleccionarFinalStates("p6");
-	
+
 	g.representar();
 	g.resultado();
 	//Segundo grafo ejemplo
 	g2.insertarArista("p0", "p1", "a");
 	g2.representar();
-	
+
 */
 	p.insertarArista("p0", "p1", "0");
 	p.insertarArista("p0", "p0", "1");
@@ -45,4 +45,3 @@ public static void main(String[] args){
 	p.resultado();
 }
 }
-

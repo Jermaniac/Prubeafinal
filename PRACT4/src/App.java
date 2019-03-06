@@ -7,6 +7,7 @@ public static void main(String[] args){
 	System.out.print("PROGRAMA PRACTICA 4 TLP: ");
 	System.out.println("Pasar de un automata finito determinista a una expresion regular.");
 	System.out.println("CAMBIO 1 xd");
+	System.out.println("CAMBIO DESDE LA RAMA1");
 	/*g.insertarArista("S","A","a");
 	g.insertarArista("S","C","b");
 	g.insertarArista("S","F","d");
